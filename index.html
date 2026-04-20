@@ -7,20 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
-    <div id="status">Player's turn</div>
-    <div class="board" id="board">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-    </div>
-    <button onclick="restartGame()">Restart</button>
-    <script src="script.js"></script>
+
+<div id="menu">
+  <h1>Tic Tac Toe</h1>
+
+  <button onclick="startGame('pvp')">2 Player Mode</button>
+  <button onclick="startGame('ai')">Play vs AI</button>
+</div>
+
+<div id="game" style="display:none;">
+  <h2 id="status">Your turn</h2>
+
+  <div class="board" id="board">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+
+  <button onclick="restartGame()">Restart</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
 </body>
 </html> 
