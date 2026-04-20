@@ -25,10 +25,8 @@ cells.forEach((cell, index) => {
 function handleClick(cell, index) {
   if (board[index] !== "" || !gameActive || isThinking) return;
 
-  // prevents us playing during AI turn
   if (mode === "ai" && currentPlayer === "O") return;
 
-  // make move
   board[index] = currentPlayer;
   cell.textContent = currentPlayer;
 
@@ -75,7 +73,13 @@ function checkWinner() {
   }
 
   currentPlayer = currentPlayer === "X" ? "O" : "X";
-  statusText.textContent = `Player ${currentPlayer}'s turn`;
+
+  if (mode === "ai") {
+    statusText.textContent =
+      currentPlayer === "X" ? "Your turn" : "AI thinking...";
+  } else {
+    statusText.textContent = `Player ${currentPlayer}'s turn`;
+  }
 }
 
 // AI (random ahh move)
@@ -97,7 +101,7 @@ function aiMove() {
 
   if (gameActive) {
     currentPlayer = "X";
-    statusText.textContent = "Player X's turn";
+    statusText.textContent = "Your turn";
   }
 }
 
@@ -108,7 +112,7 @@ function restartGame() {
   currentPlayer = "X";
   isThinking = false;
 
-  statusText.textContent = "Player X's turn";
+  statusText.textContent = "Select a mode";
   cells.forEach(cell => (cell.textContent = ""));
 }
 

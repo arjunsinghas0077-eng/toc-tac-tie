@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: black;
+  background: black;
   color: white;
   margin: 0;
   padding: 0;
@@ -22,14 +22,14 @@ body {
   margin: 10px auto;
   padding: 12px 25px;
   font-size: 18px;
-  background: black;
+  background: blueviolet;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
 #menu button:hover {
-  background: black;
+  background: teal;
 }
 
 /* game area */
