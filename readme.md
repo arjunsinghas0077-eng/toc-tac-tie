@@ -13,7 +13,7 @@ Features
 (Add your GitHub Pages link here later)
 
 Project Structure
-tic-tac-toe/
+toc-tac-tie/
 1) index.html
 2) style.css
 3) script.js
