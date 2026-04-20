@@ -1,4 +1,4 @@
-let mode = "pvp"; // or "ai"
+let mode = "pvp"; // "pvp" or "ai"
 
 const cells = document.querySelectorAll(".cell");
 const statusText = document.getElementById("status");
@@ -7,25 +7,45 @@ let currentPlayer = "X";
 let board = ["", "", "", "", "", "", "", "", ""];
 let gameActive = true;
 
+// prevents AI overlap and spam clicks which tbh people do to win unfairly
+let isThinking = false;
+
 const winPatterns = [
   [0,1,2],[3,4,5],[6,7,8],
   [0,3,6],[1,4,7],[2,5,8],
   [0,4,8],[2,4,6]
 ];
 
+// settingup board clicks
 cells.forEach((cell, index) => {
   cell.addEventListener("click", () => handleClick(cell, index));
 });
 
+// OUR MOVE
 function handleClick(cell, index) {
-  if (board[index] !== "" || !gameActive) return;
+  if (board[index] !== "" || !gameActive || isThinking) return;
 
+  // prevents us playing during AI turn
+  if (mode === "ai" && currentPlayer === "O") return;
+
+  // make move
   board[index] = currentPlayer;
   cell.textContent = currentPlayer;
 
   checkWinner();
+
+  // trigger AI if needed
+  if (mode === "ai" && currentPlayer === "O" && gameActive) {
+    isThinking = true;
+
+    setTimeout(() => {
+      aiMove();
+      isThinking = false;
+    }, 300);
+  }
 }
 
+// WIN LOGIC
 function checkWinner() {
   let won = false;
 
@@ -58,11 +78,46 @@ function checkWinner() {
   statusText.textContent = `Player ${currentPlayer}'s turn`;
 }
 
+// AI (random ahh move)
+function aiMove() {
+  let empty = [];
+
+  board.forEach((val, i) => {
+    if (val === "") empty.push(i);
+  });
+
+  if (empty.length === 0 || !gameActive) return;
+
+  let move = empty[Math.floor(Math.random() * empty.length)];
+
+  board[move] = "O";
+  cells[move].textContent = "O";
+
+  checkWinner();
+
+  if (gameActive) {
+    currentPlayer = "X";
+    statusText.textContent = "Player X's turn";
+  }
+}
+
+// restart the fucken game
 function restartGame() {
   board = ["", "", "", "", "", "", "", "", ""];
   gameActive = true;
   currentPlayer = "X";
-  statusText.textContent = "Player X's turn";
+  isThinking = false;
 
+  statusText.textContent = "Player X's turn";
   cells.forEach(cell => (cell.textContent = ""));
+}
+
+// start game mode (menu button)
+function startGame(selectedMode) {
+  mode = selectedMode;
+
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("game").style.display = "block";
+
+  restartGame();
 }
