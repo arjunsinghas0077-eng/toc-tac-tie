@@ -1,6 +1,6 @@
-Tic Tac Toe
+Toc Tac Tie
 
-A simple and clean Tic Tac Toe game built using HTML, CSS, and JavaScript.
+A simple and clean Toc Tac Tie game built using HTML, CSS, and JavaScript.
 
 Features
 - 2-player gameplay
