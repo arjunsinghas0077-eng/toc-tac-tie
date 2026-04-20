@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<!--you do know we in a democracy and have choices, right? -->
 <div id="menu">
   <h1>Tic Tac Toe</h1>
 
@@ -15,8 +16,10 @@
   <button onclick="startGame('ai')">Play vs AI</button>
 </div>
 
+<!--the main point of why you clicked the link-->
 <div id="game" style="display:none;">
-  <h2 id="status">Your turn</h2>
+
+  <h2 id="status">Our turn</h2>
 
   <div class="board" id="board">
     <div class="cell"></div>
@@ -31,10 +34,9 @@
   </div>
 
   <button onclick="restartGame()">Restart</button>
+
 </div>
 
 <script src="script.js"></script>
-
 </body>
-</body>
-</html> 
+</html>
