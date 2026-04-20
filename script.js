@@ -32,7 +32,7 @@ function handleClick(cell, index) {
 
   checkWinner();
 
-  // trigger AI if needed
+  // triggering AI if needed
   if (mode === "ai" && currentPlayer === "O" && gameActive) {
     isThinking = true;
 
@@ -124,4 +124,18 @@ function startGame(selectedMode) {
   document.getElementById("game").style.display = "block";
 
   restartGame();
+}
+//goin back
+function goBack() {
+  board = ["", "", "", "", "", "", "", "", ""];
+  gameActive = true;
+  currentPlayer = "X";
+  isThinking = false;
+
+  cells.forEach(cell => (cell.textContent = ""));
+
+  document.getElementById("game").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+
+  statusText.textContent = "Our turn";
 }
