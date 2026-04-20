@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: yellow;
+  background-color: yellow !important;
   color: white;
   margin: 0;
   padding: 0;
